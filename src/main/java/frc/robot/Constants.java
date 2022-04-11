@@ -17,15 +17,19 @@ public final class Constants {
         public static final int
             kFRDriveMotorCANID = 1,
             kFRSteerMotorCADID = 2,
+            kFRCANCoderCANID   = 3,
 
-            kFLDriveMotorCADID = 3,
-            kFLSteerMotorCADID = 4,
+            kFLDriveMotorCADID = 4,
+            kFLSteerMotorCADID = 5,
+            kFLCANCoderCANID   = 6,
 
-            kBLDriveMotorCADID = 5,
-            kBLSteerMotorCADID = 6,
+            kBLDriveMotorCADID = 7,
+            kBLSteerMotorCADID = 8,
+            kBLCANCoderCANID = 9,
             
-            kBRDriveMotorCADID = 7,
-            kBRSteerMotorCADID = 8;
+            kBRDriveMotorCADID = 10,
+            kBRSteerMotorCADID = 11,
+            kBRCANCoderCANID   = 12;
 
     }
     public final class RobotDimentions{

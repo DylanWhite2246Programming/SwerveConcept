@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.sensors.CANCoder;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class SwerveModule extends SubsystemBase {
 
   private WPI_TalonFX driveMotor, steerMotor;
+  private CANCoder encoder;
 
   private static final double kWheelCircumfrance = Units.inchesToMeters(4)*Math.PI;
   private static final double kGearRatio = 6.75;
@@ -46,7 +48,8 @@ public class SwerveModule extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   public SwerveModule(
     int driveMotorCANID, 
-    int steerMotorCANID
+    int steerMotorCANID,
+    int CANCoderCANID
   ) {
     driveMotor = new WPI_TalonFX(driveMotorCANID);
     steerMotor = new WPI_TalonFX(steerMotorCANID);
