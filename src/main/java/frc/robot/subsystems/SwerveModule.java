@@ -20,13 +20,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class SwerveModule extends SubsystemBase {
 
   private WPI_TalonFX driveMotor, steerMotor;
-  private CANCoder encoder;
+  private CANCoder steerEncoder;
 
   private static final double kWheelCircumfrance = Units.inchesToMeters(4)*Math.PI;
   private static final double kGearRatio = 6.75;
   private static final int kCPR = 2048;
 
-  private static final double kSteeringRatio = 12.8;
+  //private static final double kSteeringRatio = 12.8;
 
   private final PIDController driveController
     = new PIDController(1, 0, .1);
@@ -53,9 +53,10 @@ public class SwerveModule extends SubsystemBase {
   ) {
     driveMotor = new WPI_TalonFX(driveMotorCANID);
     steerMotor = new WPI_TalonFX(steerMotorCANID);
+    steerEncoder = new CANCoder(CANCoderCANID);
 
     driveMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-    steerMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    //steerMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
   }
 
   public double getWheelDisplacement(){
@@ -64,9 +65,12 @@ public class SwerveModule extends SubsystemBase {
   }
   public Rotation2d getTurnPosition(){
     return new Rotation2d(
-      (steerMotor.getSelectedSensorPosition()*2*Math.PI)
-      /(kCPR*kSteeringRatio)
+      steerEncoder.getAbsolutePosition()
     );
+    //return new Rotation2d(
+    //  (steerMotor.getSelectedSensorPosition()*2*Math.PI)
+    //  /(kCPR*kSteeringRatio)
+    //);
   }
 
   public double getWheelVelocity(){
@@ -74,8 +78,9 @@ public class SwerveModule extends SubsystemBase {
       /(kCPR*kGearRatio);
   }
   public double getSteerRate(){
-    return (steerMotor.getSelectedSensorVelocity()*10*2*Math.PI)
-      /(kCPR*kSteeringRatio);
+    return Units.degreesToRadians(steerEncoder.getVelocity());
+    //return (steerMotor.getSelectedSensorVelocity()*10*2*Math.PI)
+    //  /(kCPR*kSteeringRatio);
   }
 
   public SwerveModuleState getState(){
