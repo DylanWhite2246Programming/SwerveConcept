@@ -87,6 +87,9 @@ public class SwerveModule extends SubsystemBase {
     return new SwerveModuleState(getWheelVelocity(), getTurnPosition());
   }
 
+  public double getDriveMotorTemp(){return driveMotor.getTemperature();}
+  public double getSteerMotorTemp() {return steerMotor.getTemperature();}
+
   public void setDesiredState(SwerveModuleState desiredState){
     SwerveModuleState state 
       = SwerveModuleState.optimize(desiredState, getTurnPosition());
