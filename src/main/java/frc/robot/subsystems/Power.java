@@ -29,10 +29,13 @@ public class Power extends SubsystemBase {
     power.addNumber("Voltage", this::getVoltage)
       .withWidget(BuiltInWidgets.kDial)
       .withProperties(Map.of("min",0,"max",13));
+    
     power.addNumber("Amp Draw", this::getAmpDraw)
       .withWidget(BuiltInWidgets.kDial)
       .withProperties(Map.of("min",0,"max",120));
+    
     power.addNumber("Power", this::getPower);
+    
     power.add(PDP)
       .withWidget(BuiltInWidgets.kPowerDistribution);
   }
