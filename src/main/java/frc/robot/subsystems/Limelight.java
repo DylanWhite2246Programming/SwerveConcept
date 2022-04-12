@@ -29,6 +29,7 @@ public class Limelight extends SubsystemBase {
   public double getYaw(){return yaw.getDouble(0);}
   public double getPitch(){return pitch.getDouble(0);}
   public double getArea(){return area.getDouble(0);}
+  
   /**
    * @param mode 0 Auto, 1 off, 2 blink, 3 force on
    */
