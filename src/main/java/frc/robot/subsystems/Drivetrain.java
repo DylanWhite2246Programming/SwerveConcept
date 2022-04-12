@@ -11,11 +11,17 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.wpilibj.SPI.Port;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.Ports;
 import frc.robot.Constants.RobotDimentions;
 
 public class Drivetrain extends SubsystemBase {
+
+  private ShuffleboardTab drivetrainTab = Shuffleboard.getTab("Drivetrain");
+  //private NetworkTable driveTable = NetworkTableInstance.getDefault().getTable("Drivetrain");
+
   private final double kMaxSpeed = 3;
 
   private final Translation2d frontRightLocation = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
@@ -43,6 +49,9 @@ public class Drivetrain extends SubsystemBase {
 
   /** Creates a new Drivetrain. */
   public Drivetrain() {
+    drivetrainTab.addNumber("Y Velocity", this::getyVelocity);
+    drivetrainTab.addNumber("Rot Velocity", this::getRotVelociy);
+
     navx.reset();
   }
 
@@ -59,6 +68,18 @@ public class Drivetrain extends SubsystemBase {
     backleft.setDesiredState(swerveModuleStates[2]);
     backright.setDesiredState(swerveModuleStates[3]);
   }
+
+  public ChassisSpeeds getChassisSpeeds(){
+    return kinematics.toChassisSpeeds(
+      frontLeft.getState(),
+      frontRight.getState(),
+      backleft.getState(),
+      backright.getState()
+    );
+  }
+  
+  public double getyVelocity(){return getChassisSpeeds().vyMetersPerSecond;}
+  public double getRotVelociy(){return getChassisSpeeds().omegaRadiansPerSecond;}
 
   @Override
   public void periodic() {
