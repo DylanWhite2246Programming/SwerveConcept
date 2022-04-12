@@ -24,7 +24,7 @@ public class Drivetrain extends SubsystemBase {
 
   private final double kMaxSpeed = 3;
 
-  private double yCoef, xCoef, zCoef;
+  private double yCoef=1, xCoef=1, zCoef=1;
 
   private final Translation2d frontRightLocation 
     = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
