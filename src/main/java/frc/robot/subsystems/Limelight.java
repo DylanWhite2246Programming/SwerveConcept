@@ -11,12 +11,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Limelight extends SubsystemBase {
   private final NetworkTable limeTable = NetworkTableInstance.getDefault().getTable("limelight");
-  NetworkTableEntry hasTarget,yaw,pitch,area,ledMode,camMode,pipeline;
+  NetworkTableEntry hasTarget,yaw,pitch,skew,area,ledMode,camMode,pipeline;
   /** Creates a new Limelight. */
   public Limelight() {
     hasTarget = limeTable.getEntry("tv");
     yaw = limeTable.getEntry("tx");
     pitch = limeTable.getEntry("ty");
+    skew = limeTable.getEntry("ts");
     area = limeTable.getEntry("ta");
 
     ledMode = limeTable.getEntry("ledMode");
@@ -24,7 +25,7 @@ public class Limelight extends SubsystemBase {
     pipeline = limeTable.getEntry("pipeline");
   }
 
-  public boolean hasTargets(){return hasTarget.getBoolean(false);}
+  public boolean hasTargets(){return (int)hasTarget.getNumber(0)==1;}
   public double getYaw(){return yaw.getDouble(0);}
   public double getPitch(){return pitch.getDouble(0);}
   public double getArea(){return area.getDouble(0);}
