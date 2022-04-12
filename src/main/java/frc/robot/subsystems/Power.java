@@ -6,8 +6,6 @@ package frc.robot.subsystems;
 
 import java.util.Map;
 
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
@@ -19,7 +17,7 @@ import frc.robot.Constants.Ports;
 public class Power extends SubsystemBase {
   
   private ShuffleboardTab power = Shuffleboard.getTab("Power");
-  private NetworkTable powerTable = NetworkTableInstance.getDefault().getTable("Power");
+  //private NetworkTable powerTable = NetworkTableInstance.getDefault().getTable("Power");
 
   PowerDistribution PDP = new PowerDistribution(Ports.kPDPCANID, ModuleType.kRev);
   /** Creates a new Power. */
