@@ -18,8 +18,8 @@ import frc.robot.Constants.Ports;
 
 public class Power extends SubsystemBase {
   
-  ShuffleboardTab power = Shuffleboard.getTab("Power");
-  NetworkTable powerTable = NetworkTableInstance.getDefault().getTable("Power");
+  private ShuffleboardTab power = Shuffleboard.getTab("Power");
+  private NetworkTable powerTable = NetworkTableInstance.getDefault().getTable("Power");
 
   PowerDistribution PDP = new PowerDistribution(Ports.kPDPCANID, ModuleType.kRev);
   /** Creates a new Power. */
