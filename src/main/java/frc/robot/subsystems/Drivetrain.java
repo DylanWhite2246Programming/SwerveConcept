@@ -24,6 +24,8 @@ public class Drivetrain extends SubsystemBase {
 
   private final double kMaxSpeed = 3;
 
+  private double yCoef, xCoef, zCoef;
+
   private final Translation2d frontRightLocation 
     = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
   private final Translation2d frontLeftLocation 
@@ -53,6 +55,7 @@ public class Drivetrain extends SubsystemBase {
 
   /** Creates a new Drivetrain. */
   public Drivetrain() {
+
     drivetrainTab.addNumber("Y Velocity", this::getyVelocity);
     drivetrainTab.addNumber("Rot Velocity", this::getRotVelociy);
 
@@ -80,8 +83,8 @@ public class Drivetrain extends SubsystemBase {
   public void drive(double x, double y, double z, boolean fieldRelative) {
     var swerveModuleStates = kinematics.toSwerveModuleStates(
       fieldRelative
-        ? ChassisSpeeds.fromFieldRelativeSpeeds(x, y, z, navx.getRotation2d().times(-1))
-        : new ChassisSpeeds(x, y, z)
+        ? ChassisSpeeds.fromFieldRelativeSpeeds(xCoef*x, yCoef*y, zCoef*z, navx.getRotation2d().times(-1))
+        : new ChassisSpeeds(xCoef*x, yCoef*y, zCoef*z)
     );
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, kMaxSpeed);
 
@@ -102,6 +105,8 @@ public class Drivetrain extends SubsystemBase {
   
   public double getyVelocity(){return getChassisSpeeds().vyMetersPerSecond;}
   public double getRotVelociy(){return getChassisSpeeds().omegaRadiansPerSecond;}
+
+  public void setCoef(double xCoe, double yCoe, double zCoe) {xCoef=xCoe; yCoef=yCoe; zCoef=zCoe;}
 
   @Override
   public void periodic() {
