@@ -29,7 +29,9 @@ public final class Constants {
             
             kBRDriveMotorCADID = 10,
             kBRSteerMotorCADID = 11,
-            kBRCANCoderCANID   = 12;
+            kBRCANCoderCANID   = 12,
+
+            kPDPCANID = 13;
 
     }
     public final class RobotDimentions{
