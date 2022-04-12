@@ -24,10 +24,10 @@ public class Limelight extends SubsystemBase {
     pipeline = limeTable.getEntry("pipeline");
   }
 
+  public boolean hasTargets(){return hasTarget.getBoolean(false);}
   public double getYaw(){return yaw.getDouble(0);}
   public double getPitch(){return pitch.getDouble(0);}
   public double getArea(){return area.getDouble(0);}
-  public boolean hasTargets(){return hasTarget.getBoolean(false);}
   /**
    * @param mode 0 Auto, 1 off, 2 blink, 3 force on
    */
