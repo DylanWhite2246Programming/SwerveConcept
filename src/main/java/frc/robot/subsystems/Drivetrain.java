@@ -24,10 +24,14 @@ public class Drivetrain extends SubsystemBase {
 
   private final double kMaxSpeed = 3;
 
-  private final Translation2d frontRightLocation = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
-  private final Translation2d frontLeftLocation = new Translation2d(-RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
-  private final Translation2d backLeftLocation = new Translation2d(-RobotDimentions.kDistanceBetweenSwerveModules, -RobotDimentions.kDistanceBetweenSwerveModules);
-  private final Translation2d backRightLocation = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, -RobotDimentions.kDistanceBetweenSwerveModules);
+  private final Translation2d frontRightLocation 
+    = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
+  private final Translation2d frontLeftLocation 
+    = new Translation2d(-RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
+  private final Translation2d backLeftLocation 
+    = new Translation2d(-RobotDimentions.kDistanceBetweenSwerveModules, -RobotDimentions.kDistanceBetweenSwerveModules);
+  private final Translation2d backRightLocation 
+    = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, -RobotDimentions.kDistanceBetweenSwerveModules);
 
   private final SwerveModule frontRight = new SwerveModule(Ports.kFRDriveMotorCANID, Ports.kFRSteerMotorCADID, Ports.kFRCANCoderCANID);
   private final SwerveModule frontLeft = new SwerveModule(Ports.kFLDriveMotorCADID, Ports.kFLSteerMotorCADID, Ports.kFLCANCoderCANID);
