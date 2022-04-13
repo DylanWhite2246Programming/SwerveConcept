@@ -79,10 +79,12 @@ public class Drivetrain extends SubsystemBase {
 
     navx.reset();
   }
-
+  /**
+   * @param overideCoef overides coefients and allows the bot to drive at full speed default value is false
+   */
   public void drive(double x, double y, double z, boolean fieldRelative, boolean overideCoef) {
-    if(overideCoef){drive(xCoef*x, yCoef*y, zCoef*z, fieldRelative);}
-    else{drive(x, y, z, fieldRelative);}
+    if(overideCoef){drive(x, y, z, fieldRelative);}
+    else{drive(xCoef*x, yCoef*y, zCoef*z, fieldRelative);}
   }
 
   public void drive(double x, double y, double z, boolean fieldRelative) {
