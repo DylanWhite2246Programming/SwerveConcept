@@ -56,7 +56,6 @@ public class SwerveModule extends SubsystemBase {
     steerEncoder = new CANCoder(CANCoderCANID);
 
     driveMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-    //steerMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
   }
 
   public double getWheelDisplacement(){
