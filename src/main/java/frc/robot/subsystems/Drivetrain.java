@@ -80,11 +80,16 @@ public class Drivetrain extends SubsystemBase {
     navx.reset();
   }
 
+  public void drive(double x, double y, double z, boolean fieldRelative, boolean overideCoef) {
+    if(overideCoef){drive(xCoef*x, yCoef*y, zCoef*z, fieldRelative);}
+    else{drive(x, y, z, fieldRelative);}
+  }
+
   public void drive(double x, double y, double z, boolean fieldRelative) {
     var swerveModuleStates = kinematics.toSwerveModuleStates(
       fieldRelative
-        ? ChassisSpeeds.fromFieldRelativeSpeeds(xCoef*x, yCoef*y, zCoef*z, navx.getRotation2d().times(-1))
-        : new ChassisSpeeds(xCoef*x, yCoef*y, zCoef*z)
+        ? ChassisSpeeds.fromFieldRelativeSpeeds(x, y, z, navx.getRotation2d().times(-1))
+        : new ChassisSpeeds(x, y, z)
     );
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, kMaxSpeed);
 
