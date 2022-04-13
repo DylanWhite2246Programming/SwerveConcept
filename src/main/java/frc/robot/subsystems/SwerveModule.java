@@ -67,6 +67,7 @@ public class SwerveModule extends SubsystemBase {
     return Rotation2d.fromDegrees(steerEncoder.getAbsolutePosition());
   }
 
+  /**meters per second */
   public double getWheelVelocity(){
     return (driveMotor.getSelectedSensorVelocity()*10*kWheelCircumfrance)
       /(kCPR*kGearRatio);
