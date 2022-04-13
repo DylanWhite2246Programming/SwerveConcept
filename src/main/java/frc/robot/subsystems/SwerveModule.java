@@ -84,16 +84,13 @@ public class SwerveModule extends SubsystemBase {
   public double getSteerMotorTemp() {return steerMotor.getTemperature();}
 
   public void setDesiredState(SwerveModuleState desiredState){
-    SwerveModuleState state 
-      = SwerveModuleState.optimize(desiredState, getTurnPosition());
-    final double driveOutput
-      = driveController.calculate(getWheelVelocity(), state.speedMetersPerSecond);
+    SwerveModuleState state = SwerveModuleState.optimize(desiredState, getTurnPosition());
 
+    final double driveOutput = driveController.calculate(getWheelVelocity(), state.speedMetersPerSecond);
     final double driveFeedForward = this.driveFeedForward.calculate(state.speedMetersPerSecond);
 
     final double steerOutput
       = steerController.calculate(getTurnPosition().getRadians(), state.angle.getRadians());
-
     final double steerFeedForward
       = this.steerFeedForward.calculate(steerController.getSetpoint().velocity);
 
