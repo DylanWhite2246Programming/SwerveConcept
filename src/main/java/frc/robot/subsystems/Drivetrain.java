@@ -27,13 +27,13 @@ public class Drivetrain extends SubsystemBase {
   private double yCoef=1, xCoef=1, zCoef=1;
 
   private final Translation2d frontRightLocation 
-    = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
+    = new Translation2d( RobotDimentions.kDistanceBetweenSwerveModules,  RobotDimentions.kDistanceBetweenSwerveModules);
   private final Translation2d frontLeftLocation 
-    = new Translation2d(-RobotDimentions.kDistanceBetweenSwerveModules, RobotDimentions.kDistanceBetweenSwerveModules);
+    = new Translation2d(-RobotDimentions.kDistanceBetweenSwerveModules,  RobotDimentions.kDistanceBetweenSwerveModules);
   private final Translation2d backLeftLocation 
     = new Translation2d(-RobotDimentions.kDistanceBetweenSwerveModules, -RobotDimentions.kDistanceBetweenSwerveModules);
   private final Translation2d backRightLocation 
-    = new Translation2d(RobotDimentions.kDistanceBetweenSwerveModules, -RobotDimentions.kDistanceBetweenSwerveModules);
+    = new Translation2d( RobotDimentions.kDistanceBetweenSwerveModules, -RobotDimentions.kDistanceBetweenSwerveModules);
 
   private final SwerveModule frontRight = new SwerveModule(Ports.kFRDriveMotorCANID, Ports.kFRSteerMotorCADID, Ports.kFRCANCoderCANID);
   private final SwerveModule frontLeft = new SwerveModule(Ports.kFLDriveMotorCADID, Ports.kFLSteerMotorCADID, Ports.kFLCANCoderCANID);
@@ -76,7 +76,7 @@ public class Drivetrain extends SubsystemBase {
     drivetrainTab.addNumber("FL Drive Motor Temp", frontLeft::getDriveMotorTemp);
     drivetrainTab.addNumber("BL Drive Motor Temp", backleft::getDriveMotorTemp);
     drivetrainTab.addNumber("BR Drive Motor Temp", backright::getDriveMotorTemp);
-    
+
     drivetrainTab.addNumber("FR Steer Motor Temp", frontRight::getSteerMotorTemp);
     drivetrainTab.addNumber("FL Steer Motor Temp", frontLeft::getSteerMotorTemp);
     drivetrainTab.addNumber("BL Steer Motor Temp", backleft::getSteerMotorTemp);
