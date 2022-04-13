@@ -71,10 +71,9 @@ public class SwerveModule extends SubsystemBase {
     return (driveMotor.getSelectedSensorVelocity()*10*kWheelCircumfrance)
       /(kCPR*kGearRatio);
   }
+  /**radians per second */
   public double getSteerRate(){
     return Units.degreesToRadians(steerEncoder.getVelocity());
-    //return (steerMotor.getSelectedSensorVelocity()*10*2*Math.PI)
-    //  /(kCPR*kSteeringRatio);
   }
 
   public SwerveModuleState getState(){
