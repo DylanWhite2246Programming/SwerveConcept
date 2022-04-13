@@ -76,6 +76,11 @@ public class Drivetrain extends SubsystemBase {
     drivetrainTab.addNumber("FL Drive Motor Temp", frontLeft::getDriveMotorTemp);
     drivetrainTab.addNumber("BL Drive Motor Temp", backleft::getDriveMotorTemp);
     drivetrainTab.addNumber("BR Drive Motor Temp", backright::getDriveMotorTemp);
+    
+    drivetrainTab.addNumber("FR Steer Motor Temp", frontRight::getSteerMotorTemp);
+    drivetrainTab.addNumber("FL Steer Motor Temp", frontLeft::getSteerMotorTemp);
+    drivetrainTab.addNumber("BL Steer Motor Temp", backleft::getSteerMotorTemp);
+    drivetrainTab.addNumber("BR Steer Motor Temp", backright::getSteerMotorTemp);
 
     navx.reset();
   }
