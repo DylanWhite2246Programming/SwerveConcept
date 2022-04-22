@@ -19,12 +19,9 @@ import frc.robot.Constants.RobotDimentions;
 
 public class Drivetrain extends SubsystemBase {
 
-  private ShuffleboardTab drivetrainTab = Shuffleboard.getTab("Drivetrain");
-  //private NetworkTable driveTable = NetworkTableInstance.getDefault().getTable("Drivetrain");
+  private ShuffleboardTab drivetrainTab = Shuffleboard.getTab("Telemetry");
 
-  private final double kMaxSpeed = 3;
-
-  private double yCoef=1, xCoef=1, zCoef=1;
+  private double yCoef=1, xCoef=1, zCoef=1, kMaxSpeed=3;
 
   private final Translation2d frontRightLocation 
     = new Translation2d( RobotDimentions.kDistanceBetweenSwerveModules,  RobotDimentions.kDistanceBetweenSwerveModules);
